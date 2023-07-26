@@ -1,0 +1,42 @@
+<%- include('../partials/header.ejs') %>
+
+  <body
+    style="margin: 0 auto; max-width: 720px; font-family: Verdana, Arial; background-color: #F8F8F8; color: #394047;">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="wrapper" bgcolor="#FFFFFF">
+      <tr>
+        <td class="r8-i" style="font-size: 0px; line-height: 0px; padding-bottom: 15px;">
+          <a href=<%= BLOG_URL %> target="_blank"
+            style="text-decoration: underline; color: #2af09c; padding-top: 1rem; padding-bottom: 1.5rem;">
+            <img src=<%= NEWSLETTER_BANNER %>
+              width="600" border="0" style="max-width: 100%; height: auto; display: block; width: 100%;"></a>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="100%" class="content" style="padding: 1rem 1rem;">
+            <tr>
+              <td valign="top">
+                <p style="color:#7c8082; font-size: 1.2rem;">
+                  <strong><%= editionNumber %></strong>
+                </p>
+                <h1>
+                  <%= editionTitle %>
+                </h1>
+              </td>
+            </tr>
+            <tr>
+              <td valign="top">
+                <div><%- html %></div>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+      <tr style="background-color: #394047;">
+        <td align="center" valign="top">
+          <%- include('../partials/footer.ejs') %>
+        </td>
+      </tr>
+    </table>
+  </body>
