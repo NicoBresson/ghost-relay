@@ -33,7 +33,6 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   try {
-    console.log({ headers: req.headers });
     const { slug, title, html, url, excerpt, tags } = req.body.post.current;
     const newsletterTag = process.env.NEWSLETTER_TAG;
     if (tags.some((tag) => tag.name === newsletterTag)) {

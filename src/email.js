@@ -3,11 +3,11 @@ const path = require("path");
 
 const dummyPayload = require("./dummy");
 
-const BLOG_URL = process.env.BLOG_URL;
-const BLOG_BARE_URL = process.env.BLOG_BARE_URL;
-const BLOG_TITLE = process.env.BLOG_TITLE;
-const NEWSLETTER_BANNER = process.env.NEWSLETTER_BANNER;
-const NEWSLETTER_TAG = process.env.NEWSLETTER_TAG;
+// const BLOG_URL = process.env.BLOG_URL;
+// const BLOG_BARE_URL = process.env.BLOG_BARE_URL;
+// const BLOG_TITLE = process.env.BLOG_TITLE;
+// const NEWSLETTER_BANNER = process.env.NEWSLETTER_BANNER;
+// const NEWSLETTER_TAG = process.env.NEWSLETTER_TAG;
 
 const renderHtml = async ({
   editionNumber,
