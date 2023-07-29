@@ -12,7 +12,7 @@ const apiInstance = new SibApiV3Sdk.EmailCampaignsApi();
 
 const createEmailCampaign = async ({ htmlContent, slug, title }) => {
   try {
-    await apiInstance.createEmailCampaign({
+    const response = await apiInstance.createEmailCampaign({
       sender: { name: SENDER_NAME, email: SENDER_EMAIL },
       tag: CAMPAIGN_TAG,
       name: slug,
@@ -24,6 +24,7 @@ const createEmailCampaign = async ({ htmlContent, slug, title }) => {
       inlineImageActivation: false,
       htmlContent,
     });
+    return response;
   } catch (error) {
     console.log(error);
   }

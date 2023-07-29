@@ -3,6 +3,7 @@ const path = require("path");
 
 const { generateEmail } = require("../email");
 const { createEmailCampaign } = require("../services/emailService");
+const { getPost } = require("../services/ghostService");
 const dummyPayload = require("../dummy");
 
 const app = express();
@@ -33,9 +34,10 @@ app.get("/", async (req, res) => {
 
 app.post("/", async (req, res) => {
   try {
-    const { slug, title, html, url, excerpt, tags } = req.body.post.current;
-    const newsletterTag = process.env.NEWSLETTER_TAG;
-    if (tags.some((tag) => tag.name === newsletterTag)) {
+    const { id, tags } = req.body.post.current;
+    if (tags.some((tag) => tag.name === process.env.NEWSLETTER_TAG)) {
+      const { slug, title, html, url, excerpt } = await getPost(id);
+
       const htmlContent = await generateEmail({
         title,
         html,
@@ -43,7 +45,12 @@ app.post("/", async (req, res) => {
         excerpt,
       });
 
-      await createEmailCampaign({ htmlContent, slug, title });
+      const createdCampaign = await createEmailCampaign({
+        htmlContent,
+        slug,
+        title,
+      });
+      console.log("Campaign created", { createdCampaign });
     }
     res.send("OK");
   } catch (error) {
