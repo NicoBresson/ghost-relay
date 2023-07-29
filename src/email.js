@@ -1,16 +1,15 @@
 const ejs = require("ejs");
 const path = require("path");
 
+const { BLOG_URL, BLOG_BARE_URL, BLOG_TITLE, NEWSLETTER_BANNER } =
+    process.env;
+
 const renderHtml = async ({
   editionNumber,
   editionTitle,
   url,
   excerpt,
   html,
-  BLOG_URL,
-  BLOG_BARE_URL,
-  BLOG_TITLE,
-  NEWSLETTER_BANNER,
 }) => {
   return new Promise((resolve, reject) => {
     ejs.renderFile(
@@ -39,18 +38,13 @@ const renderHtml = async ({
 
 const generateEmail = async ({ title, html, url, excerpt }) => {
   const [editionNumber, editionTitle] = title.split(/\s*-\s*/);
-  const { BLOG_URL, BLOG_BARE_URL, BLOG_TITLE, NEWSLETTER_BANNER } =
-    process.env;
+  
   const renderedHtml = await renderHtml({
     editionNumber,
     editionTitle,
     url,
     excerpt,
     html,
-    BLOG_URL,
-    BLOG_BARE_URL,
-    BLOG_TITLE,
-    NEWSLETTER_BANNER,
   });
   return renderedHtml;
 };
