@@ -1,8 +1,6 @@
 const ejs = require("ejs");
 const path = require("path");
 
-const dummyPayload = require("./dummy");
-
 const renderHtml = async ({
   editionNumber,
   editionTitle,
